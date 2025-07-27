@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VendorSpot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      padding: 20px;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .dashboard {
+      display: none;
+      text-align: center;
+    }
+    .products {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+    .product-item {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VendorSpot</h1>
+    <p>Find the best daily raw material deals for your street food business!</p>
+  </header>
+
+  <div class="content">
+    <div class="form-container" id="loginForm">
+      <h2>Login to VendorSpot</h2>
+      <input type="email" id="userEmail" placeholder="Enter your email" required />
+      <button onclick="loginUser()">Login</button>
+      <br />
+      <button onclick="demoLogin()">Try Demo Login</button>
+    </div>
+
+    <div class="dashboard" id="dashboard">
+      <h2>Welcome, <span id="userName"></span>!</h2>
+      <p>Explore today's supplier products & prices:</p>
+
+      <div class="products">
+        <div class="product-item">🥕 Carrots - ₹40/kg</div>
+        <div class="product-item">🍅 Tomatoes - ₹25/kg</div>
+        <div class="product-item">🧅 Onions - ₹30/kg</div>
+        <div class="product-item">🌾 Rice - ₹50/kg</div>
+        <div class="product-item">🌶️ Red Chilies - ₹120/kg</div>
+        <div class="product-item">🟤 Black Pepper - ₹500/kg</div>
+        <div class="product-item">🍚 Wheat Flour - ₹45/kg</div>
+        <div class="product-item">🧄 Garlic - ₹150/kg</div>
+        <div class="product-item">🫚 Ginger - ₹120/kg</div>
+        <div class="product-item">🧂 Salt - ₹20/kg</div>
+        <div class="product-item">🛢️ Cooking Oil - ₹120/litre</div>
+        <div class="product-item">🍋 Lemon - ₹80/kg</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function loginUser() {
+      const emailInput = document.getElementById("userEmail").value;
+      if (!emailInput) {
+        alert("Please enter an email.");
+        return;
+      }
+      const name = emailInput.split("@")[0];
+      startSession(name);
+    }
+
+    function demoLogin() {
+      startSession("Guest Vendor");
+    }
+
+    function startSession(name) {
+      document.getElementById("userName").innerText = name;
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    }
+  </script>
+</body>
+</html>
